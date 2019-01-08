@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Alta Expedientes</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <form #gestorForm="ngForm" (ngSubmit)="onSubmit(gestorForm)" autocomplete="off">
+      <div class="gestor-container">
+        <mat-form-field>
+          <input matInput id="efector" placeholder="Efector" [(ngModel)]="gestor.efector" name="efector">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" id="fecha" placeholder="Fecha" [(ngModel)]="gestor.fecha" name="fecha">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput id="categoria" placeholder="Categoria" [(ngModel)]="gestor.categoria" name="categoria">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput id="cantidad" placeholder="Cantidad" [(ngModel)]="gestor.cantidad" name="cantidad">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput id="monto" placeholder="Monto" [(ngModel)]="gestor.monto" name="monto">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput id="descripcion" placeholder="Descripcion" [(ngModel)]="gestor.descripcion" name="descripcion">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput id="detalle" placeholder="Detalle" [(ngModel)]="gestor.detalle" name="detalle">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput id="expediente" placeholder="Expediente" [(ngModel)]="gestor.expediente" name="expediente">
+        </mat-form-field>
+
+        <button mat-flat-button type="submit" [disabled]="!gestorForm.form.valid" color="primary">Primary</button>
+
+      </div>
+    </form>
+
+  </mat-card-content>
+</mat-card>
