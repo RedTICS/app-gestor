@@ -8,13 +8,10 @@
 # dependencies
 /node_modules
 
-<<<<<<< HEAD
 # profiling files
 chrome-profiler-events.json
 speed-measure-plugin.json
 
-=======
->>>>>>> 2398b5224d5d07fe057c3545466ce4a21426d0ae
 # IDEs and editors
 /.idea
 .project
@@ -37,12 +34,6 @@ speed-measure-plugin.json
 /coverage
 /libpeerconnection.log
 npm-debug.log
-<<<<<<< HEAD
-yarn-error.log
-testem.log
-/typings
-
-=======
 testem.log
 /typings
 
@@ -50,7 +41,6 @@ testem.log
 /e2e/*.js
 /e2e/*.map
 
->>>>>>> 2398b5224d5d07fe057c3545466ce4a21426d0ae
 # System Files
 .DS_Store
 Thumbs.db
