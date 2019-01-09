@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Gestor } from './../../clases/gestor';
+import { Expediente } from '../../clases/Expediente';
 
-// @Injectable({
-//     providedIn: 'root'
-// })
 @Injectable()
 export class GestorService {
     gestorURL: String = 'http://localhost:3002/ges/modules/ges';
 
-    public addExpediente(expediente: Gestor) {
+    public addExpediente(expediente: Expediente) {
         return this.httpClient.post(`${this.gestorURL}/expediente`, expediente);
     }
 

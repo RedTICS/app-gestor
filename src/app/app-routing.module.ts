@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { CargaExpedienteComponent } from './main/gestor/carga-expediente.component';
+
+
+const routes: Routes = [
+  { path: 'cargarExpediente', component: CargaExpedienteComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

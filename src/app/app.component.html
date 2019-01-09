@@ -1,3 +1,21 @@
+<div class="container">
+  <div>
+    <!-- <img class="brand-logo responsive-img" id="logo" width="190px" src="../assets/img/logo.png" /> -->
+  </div>
 
-<app-gestor></app-gestor>
-<router-outlet></router-outlet>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a routerLink="/cargarExpediente">Cargar Expediente</a></li>
+  </ul>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo right">Logo</a>
+      <ul class="left hide-on-med-and-down">
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Gestor de Expedientes<i class="material-icons right">arrow_drop_down</i></a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <router-outlet></router-outlet>
+
+</div>

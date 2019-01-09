@@ -1,0 +1,105 @@
+<div class="col m12">
+
+  <form #expedienteForm="ngForm" (ngSubmit)="onSubmit(expedienteForm)" autocomplete="off">
+
+    <div class="card-panel">
+      <span class="card-title">
+        <h5>Carga De Expedientes</h5>
+      </span>
+      <div class="row">
+
+        <div class="input-field col s6">
+          <input id="efector" type="text" class="validate" [(ngModel)]="expediente.efector" name="efector">
+          <label for="efector" data-error="Requerido" data-success="OK">Efector</label>
+        </div>
+
+        <div class="input-field col s12 m6 l6">
+          <!-- <input id="fecha" type="text" class="datepicker" [(ngModel)]="expediente.fecha" name="fecha"> -->
+          <input type="text" class="datepicker" materialize="pickadate" [(ngModel)]="expediente.fecha" name="fecha">
+          <label for="fecha" data-error="Requerido" data-success="OK">Fecha</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="categoria" type="text" class="validate" [(ngModel)]="expediente.categoria" name="categoria"
+            #categoria="ngModel">
+          <label for="categoria" data-error="Requerido" data-success="OK">Categoría</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="cantidad" type="text" class="validate" [(ngModel)]="expediente.cantidad" name="cantidad" #cantidad="ngModel">
+          <label for="cantidad" data-error="Requerido" data-success="OK">Cantidad</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="monto" type="text" class="validate" [(ngModel)]="expediente.monto" name="monto" #monto="ngModel">
+          <label for="monto" data-error="Requerido" data-success="OK">Monto</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="descripcion" type="text" class="validate" [(ngModel)]="expediente.descripcion" name="descripcion"
+            #descripcion="ngModel">
+          <label for="descripcion" data-error="Requerido" data-success="OK">Descripcion</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="detalle" type="text" class="validate" [(ngModel)]="expediente.detalle" name="detalle" #detalle="ngModel">
+          <label for="detalle" data-error="Requerido" data-success="OK">Detalle</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="expediente" type="text" class="validate" [(ngModel)]="expediente.expediente" name="expediente" #expediente="ngModel">
+          <label for="expediente" data-error="Requerido" data-success="OK">Expediente</label>
+        </div>
+
+      </div>
+      <button type="submit" class="waves-effect waves-light btn" [disabled]="!expedienteForm.form.valid">Guardar</button>
+
+    </div>
+  </form>
+</div>
+<!-- 
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="100px" fxLayoutGap.xs="0">
+
+  <div fxFlex="50%">
+    <mat-form-field>
+      <input matInput id="efector" placeholder="Efector" [(ngModel)]="gestor.efector" name="efector">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" id="fecha" placeholder="Fecha" [(ngModel)]="gestor.fecha" name="fecha">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput id="categoria" placeholder="Categoria" [(ngModel)]="gestor.categoria" name="categoria">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput id="cantidad" placeholder="Cantidad" [(ngModel)]="gestor.cantidad" name="cantidad">
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="100px" fxLayoutGap.xs="0">
+
+  <div fxFlex="50%">
+    <mat-form-field>
+      <input matInput id="monto" placeholder="Monto" [(ngModel)]="gestor.monto" name="monto">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput id="descripcion" placeholder="Descripcion" [(ngModel)]="gestor.descripcion" name="descripcion">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput id="detalle" placeholder="Detalle" [(ngModel)]="gestor.detalle" name="detalle">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput id="expediente" placeholder="Expediente" [(ngModel)]="gestor.expediente" name="expediente">
+    </mat-form-field>
+  </div>
+
+</div>
+ -->
