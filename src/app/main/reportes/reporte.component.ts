@@ -14,7 +14,6 @@ export class ReporteComponent implements OnInit {
     ngOnInit() {
 
         this.gestorService.getExpedientes().subscribe(exp => {
-            debugger;
             this.expedientes = exp;
         });
     }

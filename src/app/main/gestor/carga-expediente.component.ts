@@ -35,10 +35,9 @@ export class CargaExpedienteComponent implements OnInit {
 
     ngOnInit() {
         this.categoriaService.getCategorias().subscribe(categoria => {
-            debugger;
             this.categorias = categoria;
         });
-        
+
         this.organizacionService.getOrganizaciones().subscribe(organizaciones => {
             this.organizacionDataService = this.completerService.local(organizaciones, 'nombre').searchFields('nombre')
                 .titleField('nombre');
@@ -52,7 +51,8 @@ export class CargaExpedienteComponent implements OnInit {
                 today: 'Hoy',
                 clear: 'Limpiar',
                 close: 'Cerrar',
-                monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Deciembre'],
+                monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto',
+                    'Septiembre', 'Octubre', 'Noviembre', 'Deciembre'],
                 monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
                 weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
                 weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
