@@ -17,6 +17,7 @@
             <th>Cantidad </th>
             <th>Monto </th>
             <th>Detalle </th>
+            <th>Fecha </th>
           </tr>
         </thead>
 
@@ -29,6 +30,7 @@
             <td>{{exp.cantidad}}</td>
             <td>{{exp.monto | currency:'USD':true:'2.2-4'}}</td>
             <td>{{exp.detalle | uppercase}}</td>
+            <td>{{exp.fecha | date: 'dd/MM/yyyy'}}</td>
           </tr>
 
         </tbody>

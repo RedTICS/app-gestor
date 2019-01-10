@@ -13,7 +13,7 @@ export class Expediente {
         expediente = expediente || {};
         this._id = expediente._id;
         this.efector = expediente.efector || '';
-        this.fecha = expediente.fecha || '';
+        this.fecha = expediente.fecha || new Date();
         this.categoria = expediente.categoria || '';
         this.cantidad = expediente.cantidad || 0;
         this.monto = expediente.monto || 0;

@@ -9,6 +9,8 @@ import { CategoriaService } from './../../services/categorias/categorias.service
 
 import { CompleterService, CompleterData } from 'ng2-completer';
 
+import * as moment from 'moment';
+
 declare var $: any;
 
 @Component({
@@ -22,7 +24,7 @@ export class CargaExpedienteComponent implements OnInit {
     expediente: Expediente = {
         _id: '',
         efector: '',
-        fecha: new Date(),
+        fecha: new Date,
         categoria: '',
         cantidad: 0,
         monto: 0,
@@ -44,6 +46,8 @@ export class CargaExpedienteComponent implements OnInit {
         });
 
         $(document).ready(function () {
+            $('.modal').modal();
+
             $('.datepicker').pickadate({
                 format: 'dd/mm/yyyy',
                 closeOnSelect: true,
@@ -56,12 +60,25 @@ export class CargaExpedienteComponent implements OnInit {
                 monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
                 weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
                 weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                // onClose: function () {
+                //     var $input = $('.datepicker').pickadate()
+
+                //     // Use the picker object directly.
+                //     var picker = $input.pickadate('picker')
+                //     alert("Fecha: " + picker.component);
+                //     // this.expediente.fecha = this.value;
+                // }
             });
         });
     }
 
     onSubmit({ value, valid, form }: { value: Expediente, valid: boolean, form: any }) {
+        debugger;
+        value.fecha = moment(value.fecha, 'DD/MM/YYYY').toDate();
         this.gestorService.addExpediente(value).subscribe(exp => {
+            debugger;
+            let pepe = exp;
+            $('#modal1').modal('open');
         });
     }
 
