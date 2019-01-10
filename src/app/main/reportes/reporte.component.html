@@ -1,0 +1,38 @@
+<div class="col m12">
+  <div class="card-panel">
+    <span class="card-title">
+      <h5>Reporte De Expedientes</h5>
+    </span>
+    <div class="row">
+
+      <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Buscar Expediente' [(ngModel)]="searchText" />
+
+      <table>
+        <thead>
+          <tr>
+            <th>N° Expediente</th>
+            <th>Efector</th>
+            <th>Descripción </th>
+            <th>Categoría </th>
+            <th>Cantidad </th>
+            <th>Monto </th>
+            <th>Detalle </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr style="text-align:right" *ngFor="let exp of expedientes | filtro : searchText">
+            <td>{{exp.expediente}}</td>
+            <td>{{exp.efector | uppercase}}</td>
+            <td>{{exp.descripcion | uppercase}}</td>
+            <td>{{exp.categoria | uppercase}}</td>
+            <td>{{exp.cantidad}}</td>
+            <td>{{exp.monto | currency:'USD':true:'2.2-4'}}</td>
+            <td>{{exp.detalle | uppercase}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

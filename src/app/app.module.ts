@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
 import { CargaExpedienteComponent } from './main/gestor/carga-expediente.component';
+import { ReporteComponent } from './main/reportes/reporte.component';
 
 import { GestorService } from './services/gestor/gestor.service';
 import { OrganizacionService } from './services/organizacion/organizacion.service';
@@ -16,10 +17,14 @@ import { CategoriaService } from './services/categorias/categorias.service';
 
 import { Ng2CompleterModule } from 'ng2-completer';
 
+import { FiltroPipe } from './pipes/filtro.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
-    CargaExpedienteComponent
+    CargaExpedienteComponent,
+    ReporteComponent,
+    FiltroPipe
   ],
   imports: [
     MaterializeModule,
