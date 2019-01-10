@@ -12,13 +12,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     $(document).ready(function () {
 
-      $('.dropdown-trigger').dropdown({
+      $('.dropdown-trigger, .dropdown-trigger1').dropdown({
         hover: true,
-        constrainWidth: true,
         belowOrigin: true,
-        coverTrigger: false,
-        // gutter: ($('.dropdown1').width() * 5) / 2.0 + 0,
-        alignment: 'left'
       });
     });
   }

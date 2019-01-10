@@ -9,19 +9,23 @@
       <div class="row">
 
         <div class="input-field col s6">
-          <input id="efector" type="text" class="validate" [(ngModel)]="expediente.efector" name="efector">
-          <label for="efector" data-error="Requerido" data-success="OK">Efector</label>
+          <ng2-completer id="efector" placeholder="Efector" [(ngModel)]="expediente.efector" name="efector" class="autocomplete"
+            [datasource]="organizacionDataService" [minSearchLength]="0" [textNoResults]="'No hay coincidencia'"
+            [textSearching]="'Buscando...'" [autoHighlight]="true" [fillHighlighted]="false"></ng2-completer>
         </div>
 
         <div class="input-field col s12 m6 l6">
-          <!-- <input id="fecha" type="text" class="datepicker" [(ngModel)]="expediente.fecha" name="fecha"> -->
-          <input type="text" class="datepicker" materialize="pickadate" [(ngModel)]="expediente.fecha" name="fecha">
+          <input type="text" class="datepicker" [(ngModel)]="expediente.fecha" name="fecha">
           <label for="fecha" data-error="Requerido" data-success="OK">Fecha</label>
         </div>
 
         <div class="input-field col s6">
-          <input id="categoria" type="text" class="validate" [(ngModel)]="expediente.categoria" name="categoria"
-            #categoria="ngModel">
+          <!-- <input id="categoria" type="text" class="validate" [(ngModel)]="expediente.categoria" name="categoria"
+            #categoria="ngModel"> -->
+          <select id="categoria" name="categoria" [(ngModel)]="expediente.categoria" materialize="material_select" >
+            <option value="" disabled selected>--Seleccione-- </option>
+            <option *ngFor="let cat of categorias" [value]="cat.nombre">{{cat.nombre}}</option>
+          </select>
           <label for="categoria" data-error="Requerido" data-success="OK">Categoría</label>
         </div>
 
@@ -47,7 +51,8 @@
         </div>
 
         <div class="input-field col s6">
-          <input id="expediente" type="text" class="validate" [(ngModel)]="expediente.expediente" name="expediente" #expediente="ngModel">
+          <input id="expediente" type="text" class="validate" [(ngModel)]="expediente.expediente" name="expediente"
+            #expediente="ngModel">
           <label for="expediente" data-error="Requerido" data-success="OK">Expediente</label>
         </div>
 

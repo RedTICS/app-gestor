@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Expediente } from '../../clases/Expediente';
+import { Categoria } from '../../clases/Categorias';
 
 import { GestorService } from '../../services/gestor/gestor.service';
+import { OrganizacionService } from './../../services/organizacion/organizacion.service';
+import { CategoriaService } from './../../services/categorias/categorias.service';
+
+import { CompleterService, CompleterData } from 'ng2-completer';
 
 declare var $: any;
 
@@ -12,6 +17,8 @@ declare var $: any;
     styleUrls: ['./carga-expediente.component.scss']
 })
 export class CargaExpedienteComponent implements OnInit {
+    protected organizacionDataService: CompleterData;
+
     expediente: Expediente = {
         _id: '',
         efector: '',
@@ -24,59 +31,40 @@ export class CargaExpedienteComponent implements OnInit {
         expediente: ''
     };
 
+    categorias: Categoria[] = [];
+
     ngOnInit() {
+        this.organizacionService.getOrganizaciones().subscribe(organizaciones => {
+            this.organizacionDataService = this.completerService.local(organizaciones, 'nombre').searchFields('nombre')
+                .titleField('nombre');
+        });
+
         $(document).ready(function () {
-            $('.datepicker').datepicker({
-                autoClose: true,
+            $('.datepicker').pickadate({
                 format: 'dd/mm/yyyy',
-                i18n: {
-                    cancel: 'Cancelar',
-                    clear: 'Limpiar',
-                    done: 'Ok',
-                    previousMonth: '‹',
-                    nextMonth: '›',
-                    months: [
-                        'Enero',
-                        'Febrero',
-                        'Marzo',
-                        'Apbril',
-                        'Mayo',
-                        'Junio',
-                        'Julio',
-                        'Augosto',
-                        'Septiembre',
-                        'Octubre',
-                        'Noviembre',
-                        'Deciembre'
-                    ],
-                    monthsShort: [
-                        'Ene',
-                        'Feb',
-                        'Mar',
-                        'Abr',
-                        'May',
-                        'Jun',
-                        'Jul',
-                        'Ago',
-                        'Sep',
-                        'Oct',
-                        'Nov',
-                        'Dec'
-                    ],
-                    weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                    weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-                    weekdaysAbbrev: ['D', 'L', 'M', 'M', 'J', 'V', 'S']
-                }
+                closeOnSelect: true,
+                closeOnClear: true,
+                today: 'Hoy',
+                clear: 'Limpiar',
+                close: 'Cerrar',
+                monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Deciembre'],
+                monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
+                weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
             });
+        });
+
+        this.categoriaService.getCategorias().subscribe(categoria => {
+            this.categorias = categoria;
         });
     }
 
     onSubmit({ value, valid, form }: { value: Expediente, valid: boolean, form: any }) {
         this.gestorService.addExpediente(value).subscribe(exp => {
-
-            console.log("Expediente: ", exp);
         });
     }
 
-    constructor(private gestorService: GestorService) { }
+    constructor(private completerService: CompleterService, private categoriaService: CategoriaService,
+        private organizacionService: OrganizacionService, private gestorService: GestorService) {
+    }
 }
