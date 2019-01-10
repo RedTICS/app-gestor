@@ -24,7 +24,7 @@ export class CargaExpedienteComponent implements OnInit {
     expediente: Expediente = {
         _id: '',
         efector: '',
-        fecha: new Date,
+        fecha: new Date(),
         categoria: '',
         cantidad: 0,
         monto: 0,
@@ -34,8 +34,26 @@ export class CargaExpedienteComponent implements OnInit {
     };
 
     categorias: Categoria[] = [];
+    birthdateOption: any;
 
     ngOnInit() {
+        this.birthdateOption = {
+            format: 'dd/mm/yyyy',
+            // selectMonths: false,
+            today: 'Hoy',
+            // selectYears: 10,
+            closeOnSelect: true,
+            max: new Date(),
+            clear: 'Limpiar',
+            close: 'OK',
+            monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto',
+                'Septiembre', 'Octubre', 'Noviembre', 'Deciembre'],
+            monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
+            weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            formatSubmit: 'yyyy-mm-dd'
+        };
+
         this.categoriaService.getCategorias().subscribe(categoria => {
             this.categorias = categoria;
         });
@@ -47,34 +65,12 @@ export class CargaExpedienteComponent implements OnInit {
 
         $(document).ready(function () {
             $('.modal').modal();
-
-            $('.datepicker').pickadate({
-                format: 'dd/mm/yyyy',
-                closeOnSelect: true,
-                closeOnClear: true,
-                today: 'Hoy',
-                clear: 'Limpiar',
-                close: 'Cerrar',
-                monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto',
-                    'Septiembre', 'Octubre', 'Noviembre', 'Deciembre'],
-                monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
-                weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-                // onClose: function () {
-                //     var $input = $('.datepicker').pickadate()
-
-                //     // Use the picker object directly.
-                //     var picker = $input.pickadate('picker')
-                //     alert("Fecha: " + picker.component);
-                //     // this.expediente.fecha = this.value;
-                // }
-            });
         });
     }
 
     onSubmit({ value, valid, form }: { value: Expediente, valid: boolean, form: any }) {
         debugger;
-        value.fecha = moment(value.fecha, 'DD/MM/YYYY').toDate();
+        // value.fecha = moment(value.fecha, 'DD/MM/YYYY').toDate();
         this.gestorService.addExpediente(value).subscribe(exp => {
             debugger;
             form.reset();

@@ -15,10 +15,10 @@
         </div>
 
         <div class="input-field col s12 m6 l6">
-          <input id="fecha" type="text" class="datepicker" [(ngModel)]="expediente.fecha" name="fecha">
+          <input id="fecha" type="text" class="datepicker" [(ngModel)]="expediente.fecha" name="fecha" materialize="pickadate" [materializeParams]="[birthdateOption]">
           <label for="fecha" data-error="Requerido" data-success="OK">Fecha</label>
         </div>
-        <!-- Fecha: {{expediente.fecha}} -->
+        
         <div class="input-field col s6">
           <select id="categoria" name="categoria" [(ngModel)]="expediente.categoria" materialize="material_select"
             required>
@@ -53,7 +53,7 @@
 
         <div class="input-field col s6">
           <input id="expediente" type="text" class="validate" [(ngModel)]="expediente.expediente" name="expediente"
-            #expediente="ngModel">
+            #expediente="ngModel" required>
           <label for="expediente" data-error="Requerido" data-success="OK">Expediente</label>
         </div>
 
