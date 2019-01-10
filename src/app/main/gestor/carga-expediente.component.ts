@@ -77,6 +77,7 @@ export class CargaExpedienteComponent implements OnInit {
         value.fecha = moment(value.fecha, 'DD/MM/YYYY').toDate();
         this.gestorService.addExpediente(value).subscribe(exp => {
             debugger;
+            form.reset();
             let pepe = exp;
             $('#modal1').modal('open');
         });
