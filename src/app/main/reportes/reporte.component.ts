@@ -10,6 +10,7 @@ import { Expediente } from './../../clases/Expediente';
 })
 export class ReporteComponent implements OnInit {
     expedientes: Expediente[];
+    searchText: any;
 
     ngOnInit() {
 

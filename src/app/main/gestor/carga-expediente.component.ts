@@ -19,7 +19,7 @@ declare var $: any;
     styleUrls: ['./carga-expediente.component.scss']
 })
 export class CargaExpedienteComponent implements OnInit {
-    protected organizacionDataService: CompleterData;
+    organizacionDataService: CompleterData;
 
     expediente: Expediente = {
         _id: '',
@@ -34,10 +34,10 @@ export class CargaExpedienteComponent implements OnInit {
     };
 
     categorias: Categoria[] = [];
-    birthdateOption: any;
+    expedienteOption: any;
 
     ngOnInit() {
-        this.birthdateOption = {
+        this.expedienteOption = {
             format: 'dd/mm/yyyy',
             // selectMonths: false,
             today: 'Hoy',

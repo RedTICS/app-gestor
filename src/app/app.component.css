@@ -7,3 +7,15 @@
   text-align: center;
   /* padding-bottom: 5em; */
 }
+
+nav {
+  background-color: #315091 !important;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+  color: #315091 !important;
+}
+
+nav ul a:hover {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
