@@ -19,9 +19,5 @@ export class ReporteComponent implements OnInit {
         });
     }
 
-//     editExpediente(exp: Expediente) {
-// debugger;
-//     }
-
     constructor(private gestorService: GestorService) { }
 }
