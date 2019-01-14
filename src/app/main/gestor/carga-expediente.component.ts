@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Expediente } from '../../clases/Expediente';
 import { Categoria } from '../../clases/Categorias';
@@ -21,6 +22,9 @@ declare var $: any;
 export class CargaExpedienteComponent implements OnInit {
     organizacionDataService: CompleterData;
 
+    id: String;
+    private sub: any;
+
     expediente: Expediente = {
         _id: '',
         efector: '',
@@ -37,6 +41,14 @@ export class CargaExpedienteComponent implements OnInit {
     expedienteOption: any;
 
     ngOnInit() {
+        this.sub = this.route.params.subscribe(params => {
+            let idExpediente = params['id'];
+
+            this.gestorService.getExpedienteById(idExpediente).subscribe(exp => {
+
+            });
+        });
+
         this.expedienteOption = {
             format: 'dd/mm/yyyy',
             // selectMonths: false,
@@ -79,7 +91,11 @@ export class CargaExpedienteComponent implements OnInit {
         });
     }
 
-    constructor(private completerService: CompleterService, private categoriaService: CategoriaService,
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
+
+    constructor(private route: ActivatedRoute, private completerService: CompleterService, private categoriaService: CategoriaService,
         private organizacionService: OrganizacionService, private gestorService: GestorService) {
     }
 }

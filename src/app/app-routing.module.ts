@@ -6,7 +6,7 @@ import { ReporteComponent } from './main/reportes/reporte.component';
 
 
 const routes: Routes = [
-  { path: 'cargarExpediente', component: CargaExpedienteComponent },
+  { path: 'cargarExpediente/:id', component: CargaExpedienteComponent },
   { path: 'reporte', component: ReporteComponent },
 ];
 

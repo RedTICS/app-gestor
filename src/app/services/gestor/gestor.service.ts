@@ -11,10 +11,13 @@ export class GestorService {
         return this.httpClient.post(`${this.gestorURL}/expediente`, expediente);
     }
 
-    public getExpedientes(){
+    public getExpedientes() {
         return this.httpClient.get<any[]>(`${this.gestorURL}/expedientes`);
     }
 
+    public getExpedienteById(idExpediente: any) {
+        return this.httpClient.get<any[]>(`${this.gestorURL}/expediente/${idExpediente}`);
+    }
 
     constructor(private httpClient: HttpClient) { }
 }

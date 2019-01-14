@@ -10,27 +10,33 @@
       <table class="responsive-table striped">
         <thead>
           <tr>
-            <th>N° Expediente</th>
-            <th>Efector</th>
-            <th>Descripción </th>
-            <th>Categoría </th>
-            <th>Cantidad </th>
-            <th>Monto </th>
-            <th>Detalle </th>
-            <th>Fecha </th>
+            <th style="width:5%">N° Exp</th>
+            <th style="width:20%">Efector</th>
+            <th style="width:15%">Descripción </th>
+            <th style="width:5%">Categoría </th>
+            <th style="width:5%">Cantidad </th>
+            <th style="width:5%">Monto </th>
+            <th style="width:20%">Detalle </th>
+            <th style="width:10%">Fecha </th>
+            <th style="width:5%">Editar </th>
           </tr>
         </thead>
 
         <tbody>
           <tr style="text-align:right" *ngFor="let exp of expedientes | filtro : searchText">
-            <td>{{exp.expediente}}</td>
+            <td style="text-align:center">{{exp.expediente}}</td>
             <td>{{exp.efector | uppercase}}</td>
             <td>{{exp.descripcion | uppercase}}</td>
             <td>{{exp.categoria | uppercase}}</td>
-            <td>{{exp.cantidad}}</td>
-            <td>{{exp.monto | currency:'USD':true:'2.2-4'}}</td>
+            <td style="text-align:center">{{exp.cantidad}}</td>
+            <td style="text-align:center">{{exp.monto | currency:'USD':true:'2.2-4'}}</td>
             <td>{{exp.detalle | uppercase}}</td>
-            <td>{{exp.fecha | date: 'dd/MM/yyyy'}}</td>
+            <td style="text-align:center">{{exp.fecha | date: 'dd/MM/yyyy'}}</td>
+            <td>
+              <a class="btn-floating  waves-effect waves-light red" [routerLink]="'/cargarExpediente/' + exp._id">
+                <i class="material-icons">edit</i>
+              </a>
+            </td>
           </tr>
 
         </tbody>
